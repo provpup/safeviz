@@ -6,7 +6,8 @@ let babyParse = require('babyparse');
 
 const PORT = process.env.PORT || 8080;
 
-let results = babyParse.parseFiles('./simulated_data.csv', {header: true, skipEmptyLines: true});
+//let results = babyParse.parseFiles('./simulated_data.csv', {header: true, skipEmptyLines: true});
+let results = loadFile('b_students');
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
@@ -15,12 +16,20 @@ app.use('/d3', express.static(__dirname + '/node_modules/d3/build'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
+function loadFile(fileName) {
+    return babyParse.parseFiles('./' + fileName +'.csv', { header: true, skipEmptyLines: true });
+}
 
 function findStudent(req, res, next) {
   res.locals.currentStudent = results.data[Number(req.params.id) - 1];
   next();
 }
-
+app.get('/averages/:id', function (req, res) {
+    let filename = req.params.id.toLowerCase() + "_students";
+    let studentNumber = req.query.studentNumber;
+    let content = loadFile(filename).data[studentNumber - 1];
+    res.json([content]);
+});
 app.get('/scores/:id', findStudent, function (req, res) {
   if (res.locals.currentStudent) {
     res.json([res.locals.currentStudent]);
