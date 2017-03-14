@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SafeViz</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="/styles.css" rel="stylesheet">
+  <script src="/d3/d3.js"></script>
+  <script src="/radarChart.js"></script>
+</head>
+<body>
+<h1>Student: <%= id %></h1>
+<div id="studentResults"></div>
+<script>
+  let margin = {top: 100, right: 100, bottom: 100, left: 100},
+    width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
+    height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+
+  let data = [
+         [{
+           axis: "Library Engagement",
+           value: <%= library_engagement %>
+          },
+          {
+            axis: 'Attendance',
+            value: <%= attendance %>
+          },
+          {
+            axis: "LMS Activity",
+            value: <%= lms_activity %>
+          },
+          {
+            axis: "Assessment Activity",
+            value: <%= assessment_activity %>
+          },
+          {
+            axis: "Grades",
+            value: <%= grades %>
+          }
+        ]
+      ];
+
+  let radarChartOptions = {
+    w: width,
+    h: height,
+    margin: margin,
+    maxValue: 1.5,
+    levels: 3,
+    roundStrokes: true
+  };
+  //Call function to draw the Radar chart
+  RadarChart("#studentResults", data, radarChartOptions);
+</script>
+</code>
+</body>
+</html>

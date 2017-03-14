@@ -1,0 +1,24 @@
+{
+  "name": "safeviz",
+  "version": "1.0.0",
+  "description": "LAK Hackathon prototype for student-safe visualization of learning analytics data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "visualization",
+    "learning",
+    "analytics"
+  ],
+  "author": "Kenny Teng",
+  "license": "ISC",
+  "dependencies": {
+    "babyparse": "^0.4.6",
+    "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
+    "d3": "^4.7.3",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2"
+  }
+}
