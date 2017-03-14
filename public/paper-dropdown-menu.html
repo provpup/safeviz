@@ -381,7 +381,8 @@ respectively.
           } else {
             value = selectedItem.label || selectedItem.getAttribute('label') || selectedItem.textContent.trim();
             let studentID = selectedItem.outerText.charAt(0);
-            createChart(RadarChart, 'studentResults','/averages/' + studentID);
+            let studentNum = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+            createChart(RadarChart, 'studentResults', '/averages/' + studentID + '?studentNumber=' + studentNum);
           }
 
           this._setValue(value);

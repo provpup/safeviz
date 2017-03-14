@@ -26,7 +26,8 @@ function findStudent(req, res, next) {
 }
 app.get('/averages/:id', function (req, res) {
     let filename = req.params.id.toLowerCase() + "_students";
-    let content = loadFile(filename).data[0];
+    let studentNumber = req.query.studentNumber;
+    let content = loadFile(filename).data[studentNumber - 1];
     res.json([content]);
 });
 app.get('/scores/:id', findStudent, function (req, res) {
