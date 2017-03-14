@@ -21,6 +21,14 @@ function findStudent(req, res, next) {
   next();
 }
 
+app.get('/scores/:id', findStudent, function (req, res) {
+  if (res.locals.currentStudent) {
+    res.json([res.locals.currentStudent]);
+  } else {
+    res.status(404).send(`Student ${req.params.id} not found`);
+  }
+});
+
 app.get('/students/:id', findStudent, function (req, res) {
   if (res.locals.currentStudent) {
     res.render('student', Object.assign({id: req.params.id}, res.locals.currentStudent));
