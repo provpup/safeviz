@@ -7,7 +7,7 @@ let babyParse = require('babyparse');
 const PORT = process.env.PORT || 8080;
 
 //let results = babyParse.parseFiles('./simulated_data.csv', {header: true, skipEmptyLines: true});
-let results = loadFile('simulated_data');
+let results = loadFile('b_students');
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
