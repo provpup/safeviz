@@ -33,6 +33,7 @@ function createChart(RadarChart, elementId, route) {
         }
         ];
       });
+      document.getElementById(elementId).innerHTML = '';
       RadarChart('#' + elementId, data, radarChartOptions);
     });
   }).catch(function (err) {

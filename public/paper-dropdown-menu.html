@@ -373,11 +373,15 @@ respectively.
          * optional `label` property.
          */
         _selectedItemChanged: function(selectedItem) {
-          var value = '';
+            var value = '';
+            console.log(typeof createChart)
+           
           if (!selectedItem) {
             value = '';
           } else {
             value = selectedItem.label || selectedItem.getAttribute('label') || selectedItem.textContent.trim();
+            let studentID = selectedItem.outerText.charAt(0);
+            createChart(RadarChart, 'studentResults','/averages/' + studentID);
           }
 
           this._setValue(value);

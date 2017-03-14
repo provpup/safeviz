@@ -7,7 +7,7 @@ let babyParse = require('babyparse');
 const PORT = process.env.PORT || 8080;
 
 //let results = babyParse.parseFiles('./simulated_data.csv', {header: true, skipEmptyLines: true});
-let results = findStudent('simulated_data');
+let results = loadFile('simulated_data');
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
@@ -24,7 +24,11 @@ function findStudent(req, res, next) {
   res.locals.currentStudent = results.data[Number(req.params.id) - 1];
   next();
 }
-
+app.get('/averages/:id', function (req, res) {
+    let filename = req.params.id.toLowerCase() + "_students";
+    let content = loadFile(filename).data[0];
+    res.json([content]);
+});
 app.get('/scores/:id', findStudent, function (req, res) {
   if (res.locals.currentStudent) {
     res.json([res.locals.currentStudent]);
