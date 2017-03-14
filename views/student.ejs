@@ -8,13 +8,56 @@
   <script src="/d3/d3.js"></script>
   <script src="/radarChart.js"></script>
   <script src="/createChart.js"></script>
+    <script src="https://polygit.org/webcomponentsjs+1.0.0-rc.5/components/webcomponentsjs/webcomponents-loader.js"></script>
+
+  <link rel="import" href="/bower_components/iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="/bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="/bower_components/paper-item/paper-item.html">
+  <link rel="import" href="/bower_components/paper-listbox/paper-listbox.html">
+  <link rel="import" href="/bower_components/paper-tabs/paper-tabs.html">
+	<!-- This file should be a .ejs file.-->
+  <link rel="import" href="/paper-dropdown-menu.html">
+  <link rel="import" href="/paper-dropdown-menu-light.html">
+  <link rel="import" href="/paper-dropdown-menu-shared-styles.html">
+  <link rel="import" href="/paper-dropdown-menu-icons.html">
+
+  <style is="custom-style" include="demo-pages-shared-styles">
+    paper-tabs {
+      width: 400px;
+    }
+
+    .vertical-section-container {
+      max-width: 500px;
+    }
+
+    paper-dropdown-menu {
+      width: 200px;
+      margin-right: 20px;
+    }
+  </style>
 </head>
 <body>
+<dom-element></dom-element>
+
+    <h4>Please select your chart:</h4>
+	
+
+
+    <paper-dropdown-menu label="Charts">
+	  <paper-listbox class="dropdown-content" selected="1">
+		<paper-item>allosaurus</paper-item>
+		<paper-item>brontosaurus</paper-item>
+		<paper-item>carcharodontosaurus</paper-item>
+		<paper-item>diplodocus</paper-item>
+	  </paper-listbox>
+	</paper-dropdown-menu>
+
 <h1>Student: <%= id %></h1>
 <div id="studentResults"></div>
 <script>
   createChart(RadarChart, 'studentResults', '/scores/' + '<%= id %>');
 </script>
+
 </code>
 </body>
 </html>

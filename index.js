@@ -6,7 +6,8 @@ let babyParse = require('babyparse');
 
 const PORT = process.env.PORT || 8080;
 
-let results = babyParse.parseFiles('./simulated_data.csv', {header: true, skipEmptyLines: true});
+//let results = babyParse.parseFiles('./simulated_data.csv', {header: true, skipEmptyLines: true});
+let results = findStudent('simulated_data');
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
@@ -15,6 +16,9 @@ app.use('/d3', express.static(__dirname + '/node_modules/d3/build'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
+function loadFile(fileName) {
+    return babyParse.parseFiles('./' + fileName +'.csv', { header: true, skipEmptyLines: true });
+}
 
 function findStudent(req, res, next) {
   res.locals.currentStudent = results.data[Number(req.params.id) - 1];
