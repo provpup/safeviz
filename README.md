@@ -2,11 +2,10 @@
 `safeviz` was created to address and provoke the following questions about learning analytics.
 
 ## Privacy questions
-Does the Privacy questions:
 
 - Does the dashboard comply with local privacy laws and institutional policies?
 - Is there a minimum sample size which protects individuals from being identified?
-- Is accessed controlled to the dashboard with appropriate authentication?
+- Is access control to the dashboard with appropriate authentication?
 - Are users limited to view only their own data and aggregated cohort data?
 
 ## Transparency questions
